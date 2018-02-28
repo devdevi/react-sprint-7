@@ -1,10 +1,8 @@
 import React from 'react';
-const WeatherExtraInfo = () => (
+const WeatherExtraInfo = ({humidity, wind}) => (
 	<div>
-			<p>TEMPERATURA</p>
-			<p>VELOCIDAD</p>
-
-
+			<p>{`${humidity}%h`}</p>
+			<p>{`${wind}m/s`}</p>
 	</div>
 	)
 

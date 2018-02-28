@@ -8,6 +8,7 @@ const WeatherLocation = () => (
 		<Location city ={'MIAMI'}/>
        <WeatherData />
 
-	</div>)
+	</div>
+	)
 
 export default WeatherLocation;
