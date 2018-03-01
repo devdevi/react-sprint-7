@@ -8,7 +8,7 @@ import {
 		RAIN, 
 		SNOW,
 		WINDY,
-} from './../constant/weathers';
+} from './../../../constant/weathers';
 
 const stateToIconName = (weatherState) =>{
 
