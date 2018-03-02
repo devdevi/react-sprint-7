@@ -19,8 +19,6 @@ const stateToIconName = (weatherState) =>{
 			return 'cloudy';
 		case SUN:
 			return 'day-sunny';
-		case CLOUD:
-			return 'cloud';
 		case RAIN:
 			return 'rain';
 		case SNOW:

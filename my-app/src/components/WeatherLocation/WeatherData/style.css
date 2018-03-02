@@ -1,4 +1,7 @@
 .weaterDataCont{
-	background: red;
-	
+	border: 1px solid gray;
+	display : inline-flex;
+	width: 30%;
+	padding: 2em;
+	text-align: center;
 }
