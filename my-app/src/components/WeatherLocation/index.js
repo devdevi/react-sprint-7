@@ -11,13 +11,13 @@ import {
 		WINDY,
 } from './../../constant/weathers';
 
-const data1 = {
+const data2 = {
 	temperature:20,
 	weatherState: SUN,
 	humidity: 10,
-	wind: 10,
+	wind: '10 m/s',
 }
-const data2 = {
+const data1 = {
 	temperature:30,
 	weatherState: WINDY,
 	humidity: 80,
@@ -25,7 +25,7 @@ const data2 = {
 }
 const api_key = '7ef9343f1692462eecbd9335a6bf3727';
 const location = 'santiago,scl';
-const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}`
+const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`
 
 
 class WeatherLocation extends Component{
