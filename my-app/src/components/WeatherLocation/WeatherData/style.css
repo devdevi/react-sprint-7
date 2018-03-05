@@ -1,7 +1,12 @@
 .weaterDataCont{
-	border: 1px solid gray;
-	display : inline-flex;
-	width: 30%;
+	border: .1px dotted purple;
 	padding: 2em;
 	text-align: center;
+}
+i{
+	padding: .5em , .5em;
+	color: purple;
+}
+h1{
+	color: purple;
 }

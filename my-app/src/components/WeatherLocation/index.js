@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
+import transformWeather from './../../services/transformWeather';
 
 import {
 		CLOUDY,
@@ -11,17 +12,12 @@ import {
 		WINDY,
 } from './../../constant/weathers';
 
-const data2 = {
-	temperature:20,
-	weatherState: SUN,
-	humidity: 10,
-	wind: '10 m/s',
-}
+
 const data1 = {
 	temperature:30,
 	weatherState: WINDY,
 	humidity: 80,
-	wind: 200,
+	wind: '20.0 m/s',
 }
 const api_key = '7ef9343f1692462eecbd9335a6bf3727';
 const location = 'santiago,scl';
@@ -33,30 +29,12 @@ class WeatherLocation extends Component{
 		super();
 		this.state = { 
 			city: 'Santiago',
-			data: data2,
+			data: data1,
 		}
+		console.log('constructor') 
 
 	}
-	// getWeatherState = (weather) =>{
-	// 	return SUN;
 
-	// }
-	// // esta funcion crea la data,
-	// getData = (weather_data) =>{
-	// 	//enlazado al icono del tiempo
-	// 	const weatherState = this.getWeatherState(this.weather)
-	// 	const {humidity, temp } = weather_data.main;
-	// 	const {speed} = weather_data.wind;
-
-	// 	const data ={
-	// 		humidity,
-	// 		temperature: temp,
-	// 		weatherState,
-	// 		wind: `${speed} m/s`,
-
-	// 	}
-	// 	return data;
-	// }
 	handleUpdateClick = () => {
 		// console.log('hello visaka')
 		// this.setState ({
@@ -66,14 +44,43 @@ class WeatherLocation extends Component{
 			console.log(data)
 			return data.json();
 		}).then(weather_data =>{
-			const data = this.getData(weather_data)
+			const data = transformWeather(weather_data)
 			this.setState ({ data })
 			
 			 
 		})
 	
 	}
+
+/*	CICLOS DE VIDA IMPORTANTESS!!!!*/
+	// se ejecuta antes del reder
+	componentWillMount(){
+		console.log('componentWillMount ESTO VA A TENER LA INFORMACION  ANTES DEL RENDER')
+
+
+
+
+	}
+
+	
+// SE EJECUTA AL FINAL DEL RENDER
+		componentDidMount(){
+		console.log('componentDidMount se ejecuta despues del render')
+	}
+
+
+
+// se ejecuta despues del renderizado por segunda vez
+	componentWillUpdate(nextProps, nextState){
+		console.log('componentWillUpdate')
+	}
+//Esta última parte de la actualización de un componente ocurre justo después de que se renderiza en el DOM nuestro componente.
+	componentDidUpdate(prevProps, prevState){
+		console.log('ComponentDidUpdate')
+	}
+
 	render = () => {
+		  console.log('render')
 		const {city, data} = this.state;
     return (
      <div className='weaterDataCont'>
