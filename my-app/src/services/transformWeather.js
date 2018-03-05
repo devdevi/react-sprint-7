@@ -13,16 +13,28 @@ import {
 
 
 /*treamos lo servicios de weatherLocation*/
-const getWeatherState = (weather) =>{
-	return SUN;
+const getWeatherState = weather =>{
 
+	const { id } = weather[0];
+	if(id < 300){
+		return THUNDER;
+	}else if (id < 400){ 
+		return DRIZZLE;
+	}else if (id < 600){ 
+		return RAIN;
+	}else if (id < 700){ 
+		return SNOW;
+	}else if(id === 800){ 
+		return SUN;
+	}else 		return CLOUDY;
 }
 // esta funcion crea la data,
 const transformWeather = (weather_data) =>{
 	//enlazado al icono del tiempo
-	const weatherState = getWeatherState(this.weather)
+	const { weather } = weather_data;
 	const {humidity, temp } = weather_data.main;
 	const {speed} = weather_data.wind;
+	const weatherState = getWeatherState(weather)
 
 	const data ={
 		humidity,
