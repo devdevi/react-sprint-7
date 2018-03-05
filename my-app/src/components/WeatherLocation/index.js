@@ -1,68 +1,64 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import CircularProgress from 'material-ui/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import transformWeather from './../../services/transformWeather';
 
+
 const api_key = '7ef9343f1692462eecbd9335a6bf3727';
-const location = 'santiago,scl';
-const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`
+// const location = 'santiago,scl';
+const url ='http://api.openweathermap.org/data/2.5/weather'
+// const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`
 
 // el constructor renderisa y llama la Api
 class WeatherLocation extends Component{
-	constructor (){
+	constructor ({city}){
 		super();
 		this.state = { 
-			city: 'Santiago',
+			city,
 			data: null,
 		}
 		console.log('constructor') 
 
 	}
 
-	handleUpdateClick = () => {
-		// console.log('hello visaka')
-		// this.setState ({
-		// 	data: data1,
-		// })
+	componentWillMount(){
+		const {city} = this.state
+		const api_weather = `${url}?q=${city}&appid=${api_key}&units=metric`;
+		console.log(api_weather)
 		fetch(api_weather).then( data =>{
 			console.log(data)
 			return data.json();
 		}).then(weather_data =>{
 			const data = transformWeather(weather_data)
-			this.setState ({ data })
-			
-			 
+			this.setState ({ data }) 
 		})
 	
 	}
 
-/*	CICLOS DE VIDA IMPORTANTESS!!!!*/
-	// se ejecuta antes del reder
-	componentWillMount(){
-		console.log('componentWillMount ESTO VA A TENER LA INFORMACION  ANTES DEL RENDER')
-		this.handleUpdateClick();
+// /*	CICLOS DE VIDA IMPORTANTESS!!!!*/
+// 	// se ejecuta antes del reder
+// 	componentWillMount(){
+// 		console.log('componentWillMount ESTO VA A TENER LA INFORMACION  ANTES DEL RENDER')
+// 	}
+
+
+// // SE EJECUTA AL FINAL DEL RENDER
+// 		componentDidMount(){
+// 		console.log('componentDidMount se ejecuta despues del render')
+// 	}
 
 
 
-
-	}
-
-
-// SE EJECUTA AL FINAL DEL RENDER
-		componentDidMount(){
-		console.log('componentDidMount se ejecuta despues del render')
-	}
-
-
-
-// se ejecuta despues del renderizado por segunda vez
-	componentWillUpdate(nextProps, nextState){
-		console.log('componentWillUpdate')
-	}
-//Esta última parte de la actualización de un componente ocurre justo después de que se renderiza en el DOM nuestro componente.
-	componentDidUpdate(prevProps, prevState){
-		console.log('ComponentDidUpdate')
-	}
+// // se ejecuta despues del renderizado por segunda vez
+// 	componentWillUpdate(nextProps, nextState){
+// 		console.log('componentWillUpdate')
+// 	}
+// //Esta última parte de la actualización de un componente ocurre justo después de que se renderiza en el DOM nuestro componente.
+// 	componentDidUpdate(prevProps, prevState){
+// 		console.log('ComponentDidUpdate')
+// 	}
 
 	render = () => {
 		  console.log('render')
@@ -70,7 +66,7 @@ class WeatherLocation extends Component{
     return (
      <div className='weaterDataCont'>
 		<Location city = {city}/>
-       {data ? <WeatherData data = {data} /> : 'Cargando'}
+       {data ? <WeatherData data = {data} /> : <CircularProgress size={60} thickness={7} />}
 	</div>
     );
   }
@@ -88,5 +84,10 @@ class WeatherLocation extends Component{
 
 // 	</div>
 // 	)
+
+
+WeatherLocation.propTypes ={
+	city:PropTypes.string.isRequired,
+}
 
 export default WeatherLocation;

@@ -7,6 +7,8 @@ import {
 		RAIN, 
 		SNOW,
 		WINDY,
+		THUNDER,
+		DRIZZLE
 } from './../constant/weathers';
 
 
