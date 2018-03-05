@@ -37,26 +37,26 @@ class WeatherLocation extends Component{
 		}
 
 	}
-	getWeatherState = (weather) =>{
-		return SUN;
+	// getWeatherState = (weather) =>{
+	// 	return SUN;
 
-	}
-	// esta funcion crea la data,
-	getData = (weather_data) =>{
-		//enlazado al icono del tiempo
-		const weatherState = this.getWeatherState(this.weather)
-		const {humidity, temp } = weather_data.main;
-		const {speed} = weather_data.wind;
+	// }
+	// // esta funcion crea la data,
+	// getData = (weather_data) =>{
+	// 	//enlazado al icono del tiempo
+	// 	const weatherState = this.getWeatherState(this.weather)
+	// 	const {humidity, temp } = weather_data.main;
+	// 	const {speed} = weather_data.wind;
 
-		const data ={
-			humidity,
-			temperature: temp,
-			weatherState,
-			wind: `${speed} m/s`,
+	// 	const data ={
+	// 		humidity,
+	// 		temperature: temp,
+	// 		weatherState,
+	// 		wind: `${speed} m/s`,
 
-		}
-		return data;
-	}
+	// 	}
+	// 	return data;
+	// }
 	handleUpdateClick = () => {
 		// console.log('hello visaka')
 		// this.setState ({
