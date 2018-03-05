@@ -56,13 +56,14 @@ class WeatherLocation extends Component{
 	// se ejecuta antes del reder
 	componentWillMount(){
 		console.log('componentWillMount ESTO VA A TENER LA INFORMACION  ANTES DEL RENDER')
+		this.handleUpdateClick();
 
 
 
 
 	}
 
-	
+
 // SE EJECUTA AL FINAL DEL RENDER
 		componentDidMount(){
 		console.log('componentDidMount se ejecuta despues del render')
