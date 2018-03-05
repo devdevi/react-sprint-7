@@ -27,7 +27,7 @@ const api_key = '7ef9343f1692462eecbd9335a6bf3727';
 const location = 'santiago,scl';
 const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`
 
-
+// el constructor renderisa y llama la Api
 class WeatherLocation extends Component{
 	constructor (){
 		super();
@@ -41,7 +41,7 @@ class WeatherLocation extends Component{
 		return SUN;
 
 	}
-
+	// esta funcion crea la data,
 	getData = (weather_data) =>{
 		//enlazado al icono del tiempo
 		const weatherState = this.getWeatherState(this.weather)
