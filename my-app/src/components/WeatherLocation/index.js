@@ -3,22 +3,6 @@ import Location from './Location';
 import WeatherData from './WeatherData';
 import transformWeather from './../../services/transformWeather';
 
-import {
-		CLOUDY,
-		SUN,
-		CLOUD,
-		RAIN, 
-		SNOW,
-		WINDY,
-} from './../../constant/weathers';
-
-
-const data1 = {
-	temperature:30,
-	weatherState: WINDY,
-	humidity: 80,
-	wind: '20.0 m/s',
-}
 const api_key = '7ef9343f1692462eecbd9335a6bf3727';
 const location = 'santiago,scl';
 const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${api_key}&units=metric`
@@ -29,7 +13,7 @@ class WeatherLocation extends Component{
 		super();
 		this.state = { 
 			city: 'Santiago',
-			data: data1,
+			data: null,
 		}
 		console.log('constructor') 
 
@@ -86,11 +70,12 @@ class WeatherLocation extends Component{
     return (
      <div className='weaterDataCont'>
 		<Location city = {city}/>
-       <WeatherData data = {data} />
-       <button onClick = {this.handleUpdateClick}>Actualizar</button>
+       {data ? <WeatherData data = {data} /> : 'Cargando'}
 	</div>
     );
   }
+
+  //usamos el operador ternario {?  if : else}
 
 }
 
