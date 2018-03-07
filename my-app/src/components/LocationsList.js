@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WeatherLocation from './WeatherLocation';
+import './style.css'
 
 
 // const LocationList =({cities}) => (
@@ -18,7 +19,7 @@ import WeatherLocation from './WeatherLocation';
 
 const LocationList =({cities, onSelectedLocation}) => {
 
-	const handlerWeatherLocationClick = city =>{
+	const handlerWeatherLocationClick = city => {
 		console.log('handlerWeatherLocationClick', city)
 		onSelectedLocation(city)
 		
@@ -34,7 +35,7 @@ const LocationList =({cities, onSelectedLocation}) => {
 	 />)) //si yo creo una nueva ciudad la key sera el mismo nombre de la ciudad
 );
  return(
- 	<div>
+ 	<div className="locationList">
  		{srtToComponent(cities)}
  
  	</div>)

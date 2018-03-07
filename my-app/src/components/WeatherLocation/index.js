@@ -4,6 +4,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import transformWeather from './../../services/transformWeather';
+import  './styles.css';
 
 
 const api_key = '7ef9343f1692462eecbd9335a6bf3727';
@@ -19,16 +20,16 @@ class WeatherLocation extends Component{
 			city,
 			data: null,
 		}
-		console.log('constructor') 
+		// console.log('constructor') 
 
 	}
 
 	componentWillMount(){
 		const {city} = this.state
 		const api_weather = `${url}?q=${city}&appid=${api_key}&units=metric`;
-		console.log(api_weather)
+		// console.log(api_weather)
 		fetch(api_weather).then( data =>{
-			console.log(data)
+			// console.log(data)
 			return data.json();
 		}).then(weather_data =>{
 			const data = transformWeather(weather_data)
@@ -64,7 +65,7 @@ class WeatherLocation extends Component{
 		  const {onWeatherLocationClick} = this.props;
 		const {city, data} = this.state;
     return (
-     <div className='weaterDataCont' onClick={onWeatherLocationClick}>
+     <div className='weatherLocation' onClick={onWeatherLocationClick}>
 		<Location city = {city}/>
        {data ? <WeatherData data = {data} /> : <CircularProgress size={60} thickness={7} />}
 	</div>

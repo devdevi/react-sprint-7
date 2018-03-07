@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 import LocationList from './components/LocationsList';
-
-
+import ForecastExtended from './components/ForecastExtendend';
 import './App.css';
 
 
@@ -19,17 +21,47 @@ const cities = [
 
 class App extends Component {
 
-	 handlerSelectionClick = city =>{
-		console.log('handlerSelectionClick')
+	constructor(){
+		super()
+		this.state = {
+			city: null,
+		}
+	}
+
+	 handlerSelectionClick = (city) =>{
+	 	this.setState({city})
+		console.log('handlerSelectionClick', city)
 	}
   render() {
+
+  	const {city } = this.state;
     return (
 		<MuiThemeProvider>
-		<div className="App">
-		<LocationList cities = {cities}
-		onSelectedLocation = {this.handlerSelectionClick} />
+		<Grid>
+			<Row>
+			<Col xs={12}>
+			<AppBar title='Weather-Location'/>
+			</Col>
+			</Row>
+			<Row>
+				<Col xs={12} md={6}>
+				<LocationList cities = {cities}
+				onSelectedLocation = {this.handlerSelectionClick} />
+				</Col>
+				<Col xs={12} md={6}>
+				<Paper zDepth = {4}>
+				<div className="detail">
+				{
+					city === null ? null : 
+					<ForecastExtended city = {city}> </ForecastExtended>
+				}
+				</div>
+				</Paper>
+				</Col>
+			</Row>
+			</Grid>
+			
 
-		</div>
 		</MuiThemeProvider>
     );
   }

@@ -19,7 +19,7 @@ import  './style.css';
 const WeatherData = ({data}) => {
 	
 	const {temperature, weatherState, humidity, wind} = data;
-	console.log(data)
+	// console.log(data)
 
 	return (
 
