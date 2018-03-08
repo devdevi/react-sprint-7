@@ -39,7 +39,7 @@ class WeatherLocation extends Component{
 	}
 
 // /*	CICLOS DE VIDA IMPORTANTESS!!!!*/
-// 	// se ejecuta antes del reder
+// 	// se ejecuta antes del render
 // 	componentWillMount(){
 // 		console.log('componentWillMount ESTO VA A TENER LA INFORMACION  ANTES DEL RENDER')
 // 	}

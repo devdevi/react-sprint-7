@@ -19,7 +19,7 @@ import './style.css'
 
 const LocationList =({cities, onSelectedLocation}) => {
 
-	const handlerWeatherLocationClick = city => {
+	const handlerWeatherLocationClick = city  => {
 		console.log('handlerWeatherLocationClick', city)
 		onSelectedLocation(city)
 		
