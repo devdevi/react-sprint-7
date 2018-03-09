@@ -23,7 +23,7 @@ const WeatherData = ({data}) => {
 
 	return (
 
-	<div >
+	<div className="weatherLocationEx" >
 	    <WeatherTemperature temperature={temperature} weatherState={weatherState}/>
 		<WeatherExtraInfo  humidity={humidity} wind={wind} />
 	</div>

@@ -6,8 +6,8 @@ import WeatherData from './../WeatherLocation/WeatherData';
 // const data = {temperature:10, weatherState:'rain', humidity: 10, wind:'nomal'}  	// console.log(data)
 
 const ForecastItem = ({weekDay, hour, data}) => (
-	<div>
-	<div>{weekDay} hora: {hour} hr </div>
+	<div className="visaka">
+	<div>{weekDay} - {hour} hr </div>
 	<WeatherData data={data}></WeatherData>
 	</div>
 	)

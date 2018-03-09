@@ -1,13 +1,6 @@
-.weatherLocation {
-  color: #888;
-  font-family: 'Roboto', sans-serif;
-  box-shadow: 10px 10px 42px -12px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 12px;
-  box-shadow: border-box;
-  width: calc(100% - 20px);
-  min-width: 430px;
+.weatherLocation{
+  text-align: center;
+
 }
 
 .locationCont {
@@ -17,4 +10,16 @@
 
 .locationCont h1 {
   margin: 0;
+}
+
+.weatherLocationEx {
+  text-align: center;
+  color: #888;
+  box-shadow: 10px 10px 42px -12px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 1em;
+  box-shadow: border-box;
+  width: calc(90% - 20px);
+  min-width: 330px;
 }

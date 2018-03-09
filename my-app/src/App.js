@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+// import {createStore } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 import LocationList from './components/LocationsList';
 import ForecastExtended from './components/ForecastExtendend';
+import {setCity} from './actions';
+// import {store} from './store';
 import './App.css';
 
 
@@ -17,6 +21,18 @@ const cities = [
 'Rio de Janeiro,br',
 'London,uk'
 ];
+//Redux llevamos las funciones y metodos a las carpetas actions y store 
+//hacer una constate store de reduce con un reducer dentro, 
+// const store = createStore(() => {})
+
+// 2 Lo vinculamos con el browserr, copy and paste
+/*const store = createStore(() => {},  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ );
+*/
+/*const setCity = value => ({
+	type:'setCity',
+	value
+})*/
 
 
 class App extends Component {
@@ -31,6 +47,10 @@ class App extends Component {
 	 handlerSelectionClick = (city) =>{
 	 	this.setState({city})
 		console.log('handlerSelectionClick', city)
+
+		// const action = {type:'setState', value:city} Las acction no tienen quje estar dentro del componenete
+		// store.dispatch(setCity(city)) yo ya no estoy importando store
+		this.props.setCity(city);
 	}
   render() {
 
@@ -50,7 +70,7 @@ class App extends Component {
 				</Col>
 				<Col xs={12} md={6}>
 				<Paper zDepth = {4}>
-				<div className="detail">
+				<div className="locationList">
 				{
 					city === null ? null : 
 					<ForecastExtended city = {city}> </ForecastExtended>
@@ -66,5 +86,19 @@ class App extends Component {
     );
   }
 }
+// const mapDispatchPropsActions = () => {};
+//reduz esta esperando parametros si o si toca hacerlo
+/*const componentConnected = connect(null, mapDispatchPropsActions)(App) 
+*/
+const mapDispatchPropsActions = dispatch => ({
 
-export default App;
+	setCity: value => dispatch(setCity(value))
+});
+
+const AppConnected = connect(null, mapDispatchPropsActions)(App) 
+
+
+export  default AppConnected;
+
+
+
